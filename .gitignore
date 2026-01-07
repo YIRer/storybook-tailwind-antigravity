@@ -117,3 +117,13 @@ dist
 
 *storybook.log
 storybook-static
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.idea/
+.vscode/
+*.swp
+*.swo
