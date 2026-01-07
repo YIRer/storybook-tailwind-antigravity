@@ -1,0 +1,22 @@
+@theme {
+  --font-sans: "Inter", "sans-serif";
+  --font-heading: "Outfit", "sans-serif";
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+:root {
+  /* Typography Tokens */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-heading: "Outfit", system-ui, -apple-system, sans-serif;
+
+  /* Spacing/Sizing Tokens */
+  --radius: 0.5rem;
+  
+  /* Animation Tokens */
+  --transition-fast: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}

@@ -68,19 +68,52 @@ export default function App() {
 사용 중인 프로젝트가 이미 Tailwind CSS를 사용하고 있다면, 클래스 이름 충돌이나 스타일 우선순위 문제가 발생할 수 있습니다.
 이 라이브러리의 스타일은 `dist/index.css`에 모두 번들링되어 있으므로, 별도의 Tailwind 설정 없이도 라이브러리 컴포넌트 스타일은 유지됩니다.
 
-## 5. 테마 커스터마이징 (Theming)
+## 5. 테마 커스터마이징 (Theming System)
 
-`stroybook` 라이브러리는 CSS Variables (Shadcn UI 스타일)를 사용합니다.
-색상이나 반경(radius) 등을 전역적으로 수정하고 싶다면, 귀하의 프로젝트의 `globals.css` 또는 `index.css`의 `:root` 섹션에서 변수를 재정의(Override)하면 됩니다.
+이 라이브러리는 **Design Tokens** 기반의 테마 시스템을 제공합니다.
+`dist/index.css`에는 기본 설정과 함께 확장 가능한 토큰들이 정의되어 있습니다.
+
+### 기본 제공 테마 사용
+
+라이브러리는 기본 테마(Slate) 외에 **"Vibrant"** 등 추가 테마를 제공합니다. 사용하려면 해당 CSS 클래스를 `<body>` 태그나 최상위 요소에 적용하세요.
+
+```tsx
+// 최상위 레이아웃이나 body에 클래스 적용
+<body className="theme-vibrant">
+  ...
+</body>
+```
+
+### 커스텀 테마 만들기 (Design Tokens)
+
+새로운 테마를 만드려면 CSS 파일에 다음과 같이 변수를 정의하고 클래스로 감싸주세요. 라이브러리는 이 변수들을 자동으로 감지하여 스타일을 적용합니다.
 
 ```css
-/* 당신의 프로젝트의 global css 파일 */
-:root {
-  /* Primary 색상을 파란색에서 보라색으로 변경 */
-  --primary: 262.1 83.3% 57.8%;
-  --primary-foreground: 210 40% 98%;
-  
-  /* 둥글기 정도 변경 */
-  --radius: 1rem;
+/* my-theme.css */
+@layer base {
+  .theme-forest {
+    /* Colors (HSL 권장) */
+    --background: 140 30% 98%;
+    --foreground: 140 60% 10%;
+    
+    --primary: 142.1 76% 36%;
+    --primary-foreground: 355.7 100% 97%;
+    
+    /* Typography */
+    --font-heading: "Your Font", sans-serif;
+    
+    /* Spacing & Radius */
+    --radius: 0.75rem;
+  }
 }
 ```
+
+제공되는 주요 디자인 토큰은 다음과 같습니다:
+
+1.  **Typography**: `--font-sans`, `--font-heading`
+2.  **Layout**: `--radius`
+3.  **Colors**:
+    *   `--primary`, `--secondary`, `--accent`
+    *   `--muted`, `--destructive`
+    *   `--background`, `--foreground`
+    *   `--card`, `--popover`, `--border`, `--input`, `--ring`
