@@ -64,6 +64,14 @@ export default function App() {
 이 라이브러리는 React Server Components (RSC) 호환성을 위해 빌드 결과물 최상단에 `"use client";` 지시어를 자동으로 포함하고 있습니다.
 따라서 `page.tsx` (Server Component)에서 직접 import하여 사용해도 오류 없이 동작합니다.
 
+### Tailwind CSS가 없는 환경 (Non-Tailwind Environment)
+이 라이브러리는 **Tailwind CSS가 설치되지 않은 프로젝트**에서도 문제없이 사용할 수 있습니다.
+라이브러리 자체적으로 빌드된 CSS (`dist/index.css`)에 필요한 모든 스타일이 포함되어 있습니다.
+
+1.  프로젝트 루트(진입점)에서 `import 'stroybook/dist/index.css';`를 선언하세요.
+2.  별도의 Tailwind 설정이나 PostCSS 설정은 필요하지 않습니다.
+3.  **주의**: 이 CSS에는 기본적인 CSS Reset(Preflight)이 포함되어 있습니다. 기존 프로젝트의 스타일과 충돌할 경우, CSS 우선순위를 조정하거나 불러오는 순서를 확인하세요.
+
 ### Tailwind CSS 사용 프로젝트
 사용 중인 프로젝트가 이미 Tailwind CSS를 사용하고 있다면, 클래스 이름 충돌이나 스타일 우선순위 문제가 발생할 수 있습니다.
 이 라이브러리의 스타일은 `dist/index.css`에 모두 번들링되어 있으므로, 별도의 Tailwind 설정 없이도 라이브러리 컴포넌트 스타일은 유지됩니다.
