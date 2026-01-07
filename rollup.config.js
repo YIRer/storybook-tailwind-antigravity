@@ -19,6 +19,7 @@ export default [
         file: 'dist/stroybook-lib.es.js',
         format: 'esm',
         sourcemap: true,
+        banner: '"use client";',
       },
       {
         file: 'dist/stroybook-lib.umd.js',
