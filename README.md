@@ -6,12 +6,10 @@ A reusable component library built with React, TypeScript, Storybook, Tailwind C
 
 - **Component Library**: Includes standard UI components (Dialog, Button, etc.) built on Radix UI.
 - **Styling**: Tailwind CSS with Shadcn design system variables.
-- **Development**: Storybook for component development and testing.
-- **Build**: Vite Library Mode for optimized bundling (ESM/UMD).
+- **Development**: Storybook for component development and testing with Vite HMR.
+- **Build**: Rollup for optimized library bundling (ESM/UMD) and Type definition generation.
 
 ## Installation
-
-(Assuming this package is published or linked)
 
 ```bash
 npm install stroybook
@@ -24,7 +22,7 @@ npm install stroybook
 Import the CSS file in your root entry point (e.g., `main.tsx` or `App.tsx`):
 
 ```tsx
-import 'stroybook/dist/style.css';
+import 'stroybook/dist/index.css';
 ```
 
 ### 2. Use Components
@@ -56,15 +54,11 @@ Example `index.css` overrides:
 }
 ```
 
-## Consuming Tailwind Config (Optional)
-
-If you want to use the library's Tailwind configuration or utility classes extensively in your project, you can add the library's source paths to your `tailwind.config.js` content array (if you have access to source) or just rely on the compiled CSS.
-
 ## Development
 
 - **Run Storybook**: `npm run storybook`
 - **Build Library**: `npm run build`
-- **Lint**: `npm run lint`
+- **Test**: `npx vitest`
 
 ## Project Structure
 
